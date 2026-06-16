@@ -2,7 +2,9 @@
 
 > **Mudança de rumo:** o app **não é para vender**. É nosso e da família, **sem mensalidades, sem anúncios, sem receita**. Por isso o objetivo aqui não é ganhar dinheiro — é **gastar o mínimo possível** para manter o app a funcionar para uma família.
 
-A boa notícia: para uma família (digamos 2 a 8 pessoas), o custo pode ser **quase zero** ou uns poucos euros por mês. Aqui está a conta, item a item.
+> **Regra do chefe (decidida):** **NADA de serviços pagos.** Só usamos o que for **grátis**. Não criamos contas/registos no planeamento — só na fase de construção, e mesmo aí, só tiers grátis. Se uma funcionalidade só existir paga, **fica de fora** (ou espera por alternativa grátis). O objetivo é **0 €/mês**.
+
+A boa notícia: para uma família (2 a 8 pessoas), dá mesmo para correr a **~0 €/mês** usando só tiers grátis. Aqui está a conta, item a item.
 
 ## 1. Open Banking (ligar os bancos) — o maior custo potencial, mas grátis à nossa escala
 
@@ -39,7 +41,9 @@ A boa notícia: para uma família (digamos 2 a 8 pessoas), o custo pode ser **qu
 | Backend/hosting (Supabase free / VPS) | **0–5 €** | Tier grátis chega para família |
 | Domínio (opcional) | **~1 €** | ~10 €/ano se quisermos URL bonito |
 | Apple Developer (opcional) | **~8 €** | 99 USD/ano só se publicarmos na App Store; TestFlight é grátis |
-| **Total realista** | **~0–15 €/mês** | Provavelmente perto de 0 no início |
+| **Total realista** | **~0 €/mês** | Tudo em tiers grátis |
+
+> **O único item que não é estritamente grátis** é a **API da Claude** (pagamento por uso — cêntimos/mês para uma família). Como o chefe quer "só grátis", há 3 saídas a decidir na construção: (a) aceitar os **cêntimos** da API da Claude (é uso próprio, mínimo); (b) usar um **tier/crédito grátis** de um modelo; ou (c) um **modelo local/on-device** para a categorização e o bot mais simples. **A estudar na fase de construção** — não muda o desenho.
 
 ## 6. Implicações de design (porque não há receita)
 

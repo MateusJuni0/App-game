@@ -49,6 +49,14 @@ O **app de finanças da família**: capta os gastos e dívidas quase sozinho (no
 | 10 | [Roadmap](./10-roadmap.md) | Fases, MVP, ordem de construção |
 | 11 | [Decisões e riscos](./11-riscos-e-decisoes.md) | O que já decidiste + o que pode correr mal |
 
+### Bloco 5 — Completo & build-ready
+| # | Documento | O que responde |
+|---|-----------|----------------|
+| 19 | [Catálogo completo de funcionalidades](./19-catalogo-funcionalidades.md) | Tudo o que os 14 apps têm, juntos num só (a união) |
+| 20 | [Categorias e ícones (PT)](./20-categorias-e-icones.md) | Taxonomia completa de categorias com ícones e cores |
+| 21 | [Modelo de dados](./21-modelo-de-dados.md) | Esquema pronto a construir (tabelas, campos, RLS) |
+| 22 | [Plano de construção](./22-plano-de-construcao.md) | Tarefas ordenadas para subagentes construírem tudo |
+
 ## Conclusões que saltam à vista (TL;DR)
 
 1. **Sem vender = melhor produto.** Sem paywalls, sem anúncios, sem vender dados, privacidade total. Podemos combinar o melhor de 3–4 apps numa só feature (ver `14`), coisa que os comerciais não fazem porque separam tudo em tiers pagos.

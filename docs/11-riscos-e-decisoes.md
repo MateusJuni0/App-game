@@ -18,6 +18,8 @@ Consequências (já refletidas nos docs): saiu a monetização (`09` virou custo
 
 | Escolha | Decisão |
 |---------|---------|
+| **Serviços pagos** | **NÃO. Só grátis.** Nada de pagar GoCardless/aggregadores/licenças. Se uma integração só existir paga, **não a fazemos** (ou esperamos por uma alternativa grátis). | ✅ decidido |
+| **Criar contas/registos** | **Só na fase de construção**, não agora. No planeamento não se cria nada. | ✅ decidido |
 | **Nome do app** | **CM eTech Finanças** ✅ |
 | **Tom do bot** | **Esperto que dá dicas de finanças, simpático e um bocadinho atrevido** (estilo "amigo que percebe de dinheiro"), com a regra de empatia: nunca gozar com quem está em aperto ✅ |
 | **Pagar contas (MB Way / Multibanco)** | **A estudar a fundo** (doc `18`) — feature desejada, mas regulada; ver verdict honesto antes de prometer ✅ pedido |
