@@ -1,65 +1,64 @@
 # 03 — Visão e Proposta (Visão 360°)
 
+> **Atualizado:** app **privado da família**, sem venda, sem mensalidades. Portugal. Android + iPhone + navegador.
+
 ## Missão
 
-Tirar o trabalho manual da gestão de dinheiro. Que qualquer pessoa saiba, sem esforço, **quanto tem, quanto deve e quanto pode gastar** — e tenha um assistente que a ajuda a decidir e a agir.
+Que a nossa família nunca mais precise de um app de finanças de fora. Construímos o **nosso**, à medida deles: que se atualiza sozinho, que é bonito de usar, e que tem um assistente que ajuda a decidir e a agir — para todos saberem, sem esforço, **quanto têm, quanto devem e quanto podem gastar**.
 
 ## Proposta única de valor (UVP)
 
-> **"O app de finanças que se atualiza sozinho e tem um assistente que resolve as coisas por ti."**
+> **"O app de finanças da família: atualiza-se sozinho, é lindo em qualquer ecrã, e tem um assistente que resolve as coisas."**
 
-Dois pilares que, juntos, ninguém combina bem hoje:
+Três pilares:
 
-1. **Automático primeiro:** captura multi-fonte (notificações + Open Banking + e-mail + entrada rápida) com correção fácil. Menos digitar, menos desistir.
-2. **Bot que age:** assistente Claude que lê os teus dados, responde, organiza e executa tarefas (com aprovação para o que é irreversível).
+1. **Automático primeiro:** captura multi-fonte (notificações Android + Open Banking + e-mail + entrada rápida) com correção fácil. Menos digitar.
+2. **Bonito e em todo o lado:** a mesma experiência cuidada no Android, iPhone e navegador — gráficos elegantes, animações tastefully, modo escuro. (Ver `12`–`17`.)
+3. **Bot que age:** assistente Claude que lê os dados da família, responde, organiza e executa tarefas (com aprovação para o que é irreversível).
 
-A Cleo tem o bot mas obriga a ligar o banco e não é "automático multi-fonte". O Copilot automatiza a categorização mas não tem bot. O Rocket Money tem receita extra mas a captura é só Plaid. **Nós combinamos automação multi-fonte fiável + bot agêntico honesto.**
+Como não vendemos, podemos fazer o que os apps comerciais não fazem: **sem paywalls, sem anúncios, sem vender dados, privacidade total** — e otimizar 100% para a nossa família gostar.
 
-## Princípios de produto (as regras que nos guiam)
+## Princípios de produto
 
-1. **Zero-fricção por defeito.** Cada ecrã deve responder "o que faço a seguir?" sem o utilizador pensar. Defaults inteligentes; configurar é opcional.
-2. **Honestidade radical.** Nunca exagerar o que o app/bot faz. Cancelamento em 1 toque. (A multa da Cleo é o nosso aviso permanente.)
-3. **O utilizador manda no dinheiro.** Ações reversíveis e de baixo risco podem ser automáticas; mover dinheiro ou cancelar serviços exige aprovação explícita.
-4. **Privacidade como produto.** Dados sensíveis no dispositivo sempre que possível; consentimento claro; nada de vender dados.
-5. **Fiabilidade > magia.** Melhor capturar 90% bem e deixar corrigir do que prometer 100% e falhar em silêncio. Nunca apresentar dados capturados como completos/autoritativos.
-6. **Multi-plataforma.** Android e iOS desde cedo (erro do Copilot foi ser iOS-only).
-7. **Os números vêm de código, não do LLM.** Todo o valor monetário mostrado é calculado por SQL/ferramenta; o bot só narra (ver `06`).
+1. **Zero-fricção por defeito.** Cada ecrã responde "o que faço a seguir?" sem pensar. Defaults inteligentes; configurar é opcional.
+2. **Bonito não é luxo, é requisito.** O chefe quer tudo bonito — design system coerente, gráficos elegantes, micro-interações. (Ver `12`/`13`.)
+3. **Um app, três ecrãs.** Telemóvel, tablet e navegador a partir de uma só base de código, cada um a sentir-se nativo. (Ver `16`.)
+4. **A família partilha, mas com respeito.** Contas partilhadas e pessoais; cada membro controla o que mostra. (Ver `15`.)
+5. **O utilizador manda no dinheiro.** Ações reversíveis automáticas; mover dinheiro ou cancelar serviços exige aprovação.
+6. **Privacidade como base.** Dados sensíveis no dispositivo sempre que possível; nada sai para terceiros.
+7. **Fiabilidade > magia.** Melhor capturar 90% bem e deixar corrigir do que prometer 100% e falhar em silêncio.
+8. **Os números vêm de código, não do LLM.** Todo o valor monetário é calculado por SQL/ferramenta; o bot só narra (ver `06`).
+9. **Custo quase-zero.** Preferir tiers grátis e eficiência (ver `09`).
 
-## Personas
+## Para quem — a família (não "personas de mercado")
 
-### Persona A — "A Maria sem paciência"
-- Tem rendimento, mas nunca configurou um app de finanças porque "dá trabalho".
-- Quer: ver o saldo real consolidado e **quanto pode gastar este mês** sem ficar apertada.
-- Dor: odeia categorizar e adicionar gastos.
-- Para ela: captura automática + número "podes gastar X" (estilo PocketGuard) + zero setup.
+O app serve uma família real, de idades mistas. Em vez de personas de mercado, pensamos em **papéis dentro da família**:
 
-### Persona B — "O João no aperto"
-- Tem dívidas (cartão, prestações), perde a conta às contas a vencer, falha pagamentos por esquecimento.
-- Quer: saber **o que deve, quando vence, e não falhar**.
-- Dor: ansiedade, contas espalhadas, juros por atraso.
-- Para ele: deteção automática de contas/dívidas a partir das notificações + lembretes proativos + plano simples de pagamento. **Esta é a persona que mais beneficia da leitura de notificações** ("quando for dívida, anota").
+- **Os "gestores" (ex.: pais/casal):** querem a visão consolidada da família, contas a vencer, quanto podem gastar, e poupar para objetivos comuns (férias, escola, casa).
+- **Os "individuais" (ex.: adultos da casa):** cada um tem as suas contas; querem ver o seu e contribuir para o partilhado, mantendo privacidade no que é pessoal.
+- **Os "jovens" (ex.: filhos/adolescentes):** mesada, objetivos de poupança, aprender a gerir dinheiro de forma simples e gamificada (com limites e supervisão). (Ver `15`.)
 
-> Nota: a leitura de notificações para detetar dívidas/contas (pedido explícito do chefe) serve sobretudo a Persona B. É também a parte tecnicamente mais frágil e arriscada — ver `05`.
+> A leitura de notificações (Android) serve sobretudo quem quer captura automática máxima; no iPhone a automação vem do Open Banking + e-mail + entrada rápida. Ver `05`.
 
-## Visão 360° — o ciclo completo do utilizador
+## Visão 360° — o ciclo completo
 
 ```
-   CAPTAR  ──▶  ORGANIZAR  ──▶  ENTENDER  ──▶  AGIR  ──▶  POUPAR/CONTROLAR
+   CAPTAR  ──▶  ORGANIZAR  ──▶  ENTENDER  ──▶  AGIR  ──▶  POUPAR/CONTROLAR (juntos)
      │             │              │            │              │
- notificações   categorização   bot responde  bot/utilizador  menos gastos,
- open banking   automática      "quanto…?"    cancela sub,    contas pagas,
- e-mail         deteção de      insights      cria lembrete,  dívida sob
- entrada rápida subscrições     proativos     negoceia conta  controlo
+ notificações   categorização   bot + gráficos lembretes,    objetivos da família,
+ open banking   automática      lindos,        cancelar sub,  contas pagas, dívida
+ e-mail         deteção de      insights        plano de       sob controlo, mesadas
+ entrada rápida subscrições     proativos       pagamento      dos jovens
 ```
 
-Cada seta tem de funcionar **sem trabalho manual** sempre que possível, e o bot está presente em todas as fases.
+Cada seta funciona **sem trabalho manual** sempre que possível; o bot e os gráficos estão presentes em todas as fases; e tudo isto em telemóvel, tablet e navegador.
 
 ## O que NÃO somos (anti-visão)
 
-- Não somos um banco (pelo menos no início) — não guardamos dinheiro nem damos crédito até termos licenças e razão para isso.
-- Não somos um conselheiro de investimentos regulado — ficamos do lado **informativo**, com disclaimers (ver `08`).
-- Não somos "grátis com anúncios" — isso matou a Mint.
+- Não somos um produto para vender — é da família.
+- Não somos um banco nem conselheiro de investimentos regulado — lado **informativo**, com disclaimers leves (ver `08`).
+- Não temos anúncios, paywalls nem venda de dados.
 
-## Métrica-norte (North Star)
+## Métrica-norte (informal, para nós)
 
-**Transações capturadas automaticamente por utilizador ativo por semana** — mede diretamente se a promessa "automático" está a cumprir-se. Métricas de apoio: % de transações que precisaram de correção manual, retenção D30, contas pagas a tempo (Persona B).
+Não há métricas de negócio. A medida de sucesso é simples: **a família usa o app com prazer e deixou de precisar de outros**. Sinais práticos: transações capturadas automaticamente (menos digitação), contas pagas a tempo, objetivos de poupança a avançar, e o bot a ser genuinamente útil.

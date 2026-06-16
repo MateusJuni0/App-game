@@ -45,14 +45,17 @@
 | Negociar conta (concierge/IA draft) | **Could** | Modelo Rocket Money; receita extra; complexo |
 | Mover dinheiro / pagar conta | **Won't (v1)** | Exige licenças de iniciação de pagamento + risco — futuro |
 
-## E. Conta & monetização
+## E. Conta & família (sem monetização — app privado)
 
 | Funcionalidade | Prioridade | Notas |
 |----------------|-----------|-------|
 | Onboarding sem fricção + importação | **Must** | Importador de CSV ajuda migração |
-| Tier grátis + assinatura premium | **Must** | Ver `09-monetizacao.md` |
-| Cancelamento de assinatura em 1 toque | **Must** | Obrigatório (lição FTC/Cleo) |
-| Partilha familiar / casal | **Could** | YNAB/Monarch incluem; bom para retenção |
+| Login por membro (separados, nunca partilhados) | **Must** | Ver `15` |
+| Partilha familiar com privacidade granular | **Must** | 3 níveis por conta + esconder transação (ver `15`) |
+| Modo escuro + multi-plataforma (iOS/Android/web) | **Must** | Ver `16` |
+| Jovens: mesada / tarefas / objetivos | **Could** | Variante supervisionada (ver `15`) |
+
+> Sem tiers pagos, sem assinaturas, sem anúncios — todos os membros têm tudo. Custos de operação em `09-custos-operacao.md`.
 
 ---
 

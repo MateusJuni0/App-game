@@ -1,37 +1,60 @@
-# App de Finanças Automático — Especificação Completa
+# App de Finanças da Família — Especificação Completa
 
-> Documento vivo. Fase atual: **estudo e especificação** (sem código de produto ainda).
-> Autor: sessão de pesquisa com Claude. Data: 2026-06-16.
-> Mercado-alvo a confirmar pelo chefe (ver `11-riscos-e-decisoes.md`).
+> Documento vivo. Fase atual: **estudo e desenho** (sem código de produto ainda).
+> **App privado da família — sem venda, sem mensalidades, sem anúncios.** Portugal. Android + iPhone + navegador.
+> Autor: sessão de pesquisa com Claude. Atualizado: 2026-06-16.
 
-Este repositório deixou de ser o jogo do impostor (já limpo) e passa a ser a base do **novo app de finanças / gestão de dinheiro**. O objetivo desta pasta é registar TODA a cascata de pensamento, pesquisa e decisões antes de escrever uma linha de código de produto.
+Este repositório deixou de ser o jogo do impostor (já limpo) e passa a ser a base do **app de finanças da nossa família**. O objetivo desta pasta é registar TODA a pesquisa, o desenho e as decisões antes de escrever uma linha de código de produto — para o chefe ver o produto inteiro desenhado e não andar a corrigir área a área.
 
-## A grande ideia (resumo de uma linha)
+## A grande ideia (uma linha)
 
-Um app de finanças **automático ao máximo** — que captura os gastos e dívidas sozinho (lendo notificações do banco, ligações Open Banking, etc.) para o utilizador quase nunca ter de adicionar nada à mão — com um **bot/assistente de IA** (Claude) que responde, organiza e resolve tarefas dentro do app.
+O **app de finanças da família**: capta os gastos e dívidas quase sozinho (notificações + Open Banking + e-mail + entrada rápida), é **bonito em qualquer ecrã** (gráficos elegantes, modo escuro, animações com bom gosto), tem um **bot de IA** (Claude) que responde e resolve coisas, e é **da família** (partilha com privacidade) — para deixarmos de precisar de apps de fora.
 
-## Como ler estes documentos
+## Como ler (ordem sugerida)
 
-Lê por esta ordem. Cada um é independente, mas constroem uns sobre os outros.
-
+### Bloco 1 — Estratégia e o quê
 | # | Documento | O que responde |
 |---|-----------|----------------|
-| 00 | [Sumário executivo](./00-sumario-executivo.md) | O quê, porquê, para quem, e o resumo de tudo |
-| 01 | [Pesquisa de mercado](./01-pesquisa-de-mercado.md) | Como é o mercado, a lição da Mint, como os apps que mais faturam ganham dinheiro |
-| 02 | [Análise de concorrentes](./02-analise-de-concorrentes.md) | Perfil detalhado de 14 apps (Rocket Money, Cleo, Monarch, Nubank, Revolut, etc.) |
-| 03 | [Visão e proposta](./03-visao-e-proposta.md) | Missão, posicionamento, persona, princípios, proposta única de valor (visão 360°) |
-| 04 | [Funcionalidades](./04-funcionalidades.md) | Catálogo de features priorizado (MVP vs futuro) |
-| 05 | [Automação e captura de dados](./05-automacao-captura-de-dados.md) | O coração do app: notificações, SMS, Open Banking, e-mail, Pix. A realidade das políticas |
-| 06 | [Bot assistente de IA](./06-bot-assistente-ia.md) | O bot: o que faz, personalidade, arquitetura Claude, tool use, guardrails, custos |
-| 07 | [Arquitetura técnica](./07-arquitetura-tecnica.md) | Stack (Expo/RN), backend, modelo de dados, sincronização, offline |
-| 08 | [Segurança, privacidade e conformidade](./08-seguranca-privacidade-conformidade.md) | LGPD/RGPD, PSD2, políticas da Google Play, criptografia, CASA |
-| 09 | [Monetização e negócio](./09-monetizacao.md) | Como ganhamos dinheiro, preços, unit economics |
-| 10 | [Roadmap](./10-roadmap.md) | Fases, MVP, marcos |
-| 11 | [Riscos e decisões pendentes](./11-riscos-e-decisoes.md) | O que pode correr mal + decisões que preciso de ti, chefe |
+| 00 | [Sumário executivo](./00-sumario-executivo.md) | O quê, porquê, resumo de tudo |
+| 01 | [Pesquisa de mercado](./01-pesquisa-de-mercado.md) | Como é o mercado, a lição da Mint (contexto) |
+| 02 | [Análise de concorrentes](./02-analise-de-concorrentes.md) | 14 apps em detalhe (o que copiar / evitar) |
+| 03 | [Visão e proposta](./03-visao-e-proposta.md) | Missão, família, princípios, visão 360° |
+| 04 | [Funcionalidades](./04-funcionalidades.md) | Catálogo priorizado (MoSCoW) |
 
-## Conclusões que saltam à vista (TL;DR para leres primeiro)
+### Bloco 2 — Como funciona
+| # | Documento | O que responde |
+|---|-----------|----------------|
+| 05 | [Automação e captura de dados](./05-automacao-captura-de-dados.md) | Notificações, Open Banking, e-mail, entrada rápida; realidade das políticas |
+| 06 | [Bot assistente de IA](./06-bot-assistente-ia.md) | Claude: tool use, números via SQL, custos, guardrails |
+| 07 | [Arquitetura técnica](./07-arquitetura-tecnica.md) | Stack, modelo de dados (ver também 16) |
+| 08 | [Segurança e privacidade](./08-seguranca-privacidade-conformidade.md) | RGPD, PSD2, políticas das lojas, cifra |
+| 09 | [Custos de operação](./09-custos-operacao.md) | Sem mensalidades: como manter ~0 €/mês |
 
-1. **A "captura automática lendo notificações" é viável no Android, mas frágil e politicamente arriscada.** No iOS é **impossível** por design. A Google permite hoje uma exceção ("SMS-based money management") mas aprova caso-a-caso e muitas vezes recusa dizendo que "introdução manual é a alternativa". → A automação tem de assentar em **várias fontes** (notificações + Open Banking + e-mail + entrada rápida manual), não numa só.
-2. **Quem mais fatura não ganha (só) com assinaturas.** Ganha com receita extra: negociação de contas (Rocket Money fica com 35–60% da poupança do 1.º ano), adiantamento de dinheiro (Cleo), juros/intercâmbio (Nubank, Revolut). A Mint morreu porque o modelo só-de-anúncios é fraco.
-3. **O bot é um diferenciador real e barato de operar.** A Cleo construiu um negócio de ~300M USD/ano de ARR à volta de um chatbot com personalidade. Com a API da Claude (tool use + prompt caching) dá para fazer um assistente que lê os dados do utilizador e age — com custo controlado.
-4. **Decisão #1 que preciso de ti:** mercado primário — **Brasil** (Pix, Open Finance, cultura de ler SMS/notificações do banco) ou **Portugal/Europa** (PSD2, MB Way, Open Banking)? Isto muda integrações, idioma e até a viabilidade da automação. Ver `11-riscos-e-decisoes.md`.
+### Bloco 3 — Design (o "tudo bonito e desenhado")
+| # | Documento | O que responde |
+|---|-----------|----------------|
+| 12 | [Design system](./12-design-system.md) | Cores, tipografia, espaçamento, modo escuro, movimento |
+| 13 | [Visualização de dados](./13-visualizacao-de-dados.md) | Que gráfico para cada coisa + bibliotecas |
+| 14 | [Funcionalidades inovadoras](./14-funcionalidades-inovadoras.md) | "Como é que eu melhoro isto" — padrão vs nossa versão |
+| 15 | [Família e multi-utilizador](./15-familia-multiutilizador.md) | Partilha, privacidade granular, jovens/mesadas |
+| 16 | [Multi-plataforma e UX](./16-multiplataforma-e-ux.md) | Expo iOS+Android+web, bibliotecas, backend, UX mobile |
+| 17 | [Ecrãs e fluxos](./17-ecras-e-fluxos.md) | **Tudo desenhado, ecrã a ecrã** |
+
+### Bloco 4 — Plano
+| # | Documento | O que responde |
+|---|-----------|----------------|
+| 10 | [Roadmap](./10-roadmap.md) | Fases, MVP, ordem de construção |
+| 11 | [Decisões e riscos](./11-riscos-e-decisoes.md) | O que já decidiste + o que pode correr mal |
+
+## Conclusões que saltam à vista (TL;DR)
+
+1. **Sem vender = melhor produto.** Sem paywalls, sem anúncios, sem vender dados, privacidade total. Podemos combinar o melhor de 3–4 apps numa só feature (ver `14`), coisa que os comerciais não fazem porque separam tudo em tiers pagos.
+2. **Custo quase-zero para uma família** (~0–15 €/mês): Open Banking no tier grátis, IA em cêntimos, backend grátis (ver `09`).
+3. **Automação multi-fonte e tolerante a falhas.** iPhone não lê notificações (limite Apple) → Open Banking + e-mail + entrada rápida; Android lê notificações como extra. Nunca prometer "100% automático" (ver `05`).
+4. **Bonito é requisito, não luxo.** Design system completo (`12`), gráficos elegantes e interativos (`13`), e tudo desenhado ecrã a ecrã (`17`). Stack: Expo (iOS+Android+web) + NativeWind + Supabase + PowerSync (`16`).
+5. **Família com privacidade granular** (3 níveis por conta + esconder transação + propriedade meu/dele/nosso) — resolve a lacuna do Monarch/YNAB (`15`).
+6. **A nossa stack de inovação** (`14`): "seguro por dia até ao ordenado", "runway" com aviso de saldo negativo, radar de subscrições com interceção pré-cobrança, bot com tom ajustável, objetivos que se enchem sozinhos no payday.
+
+## Estado e próximo passo
+
+Fase de **estudo e desenho** — concluída a especificação completa (00–17). A seguir, quando o chefe der luz verde: confirmar o aggregador Open Banking (GoCardless/Tink), montar o esqueleto Expo + Supabase com RLS por família, e construir o MVP da Fase 1 (ver `10`). Decisões pequenas pendentes (nome do app, etc.) em `11`.

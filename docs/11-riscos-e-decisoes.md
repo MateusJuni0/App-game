@@ -1,67 +1,53 @@
-# 11 — Riscos e Decisões Pendentes
+# 11 — Decisões e Riscos
 
-> Lê isto, chefe. Aqui está o que pode correr mal e, sobretudo, **as decisões que preciso de ti** para avançar.
+> Atualizado depois das tuas instruções, chefe. As grandes decisões já estão tomadas; ficam riscos a gerir e umas escolhas pequenas.
 
-## PARTE A — Decisões que dependem de ti
+## PARTE A — Decisões já tomadas (registo)
 
-### Decisão #1 (a mais importante): Mercado primário
-Muda integrações, idioma, custos, regras e **até a viabilidade da automação por notificações**.
+| # | Decisão | Resposta |
+|---|---------|----------|
+| 1 | Vender o app? | **Não.** É privado, da família. Sem mensalidades, sem anúncios, sem receita. |
+| 2 | Mercado | **Portugal** (só relevante para escolher o banco/Open Banking). |
+| 3 | Plataformas | **Android + iPhone + navegador**, a partir de uma só base de código. |
+| 4 | Modelo de receita | **Nenhum.** Foco em custos baixos (ver `09`). |
+| 5 | Prioridade | **Tudo bonito e bem desenhado**, ecrã a ecrã, antes de codar. UI/UX de topo, gráficos elegantes, inovação. |
 
-| Opção | A favor | Contra |
-|-------|---------|--------|
-| **Brasil** | Cultura de ler SMS/notificações do banco (a automação encaixa); Pix; Open Finance profundo (mandatado). Mercado enorme. | Aggregador tem **custo-base (~R$2.500/mês, Pluggy)**; sem produção grátis; reformas 2026 apertam dados. |
-| **Portugal/Europa** | PSD2 maduro; **GoCardless ~grátis** (se reabrir registos); RGPD claro. | Re-consentimento a cada 180 dias (fricção); ler notificações é menos cultural (cá usa-se mais Open Banking); MB Way sem feed dedicado. |
-| **EUA** | Plaid self-serve sem mínimo; mercado rico. | Regra CFPB suspensa → bancos podem cobrar pelo acesso; muito concorrido. |
+Consequências (já refletidas nos docs): saiu a monetização (`09` virou custos); visão e personas viraram **família** (`03`); entram novos docs de **design, gráficos, inovação, família, multi-plataforma e ecrãs** (`12`–`17`).
 
-> O teu vocabulário ("telemóvel", "câmara") sugere **Portugal/Europa**. Mas o pedido de "ler notificações quando for dívida" encaixa **muito melhor no Brasil** (lá os bancos mandam alerta por cada transação; na Europa a norma é Open Banking). **Preciso que confirmes.** A minha recomendação: escolher **um** mercado primário para o MVP e desenhar a captura à volta dele — Brasil se a leitura de notificações é mesmo central; Portugal/Europa se preferes assentar em Open Banking.
+## PARTE B — Pequenas escolhas que ainda ajudam (mas eu avanço com um default se não disseres nada)
 
-### Decisão #2: Plataformas no MVP
-- Recomendação: **iOS + Android juntos** (erro do Copilot foi iOS-only). Mas a **leitura de notificações só existe no Android** — no iOS a automação é Open Banking + e-mail + entrada rápida. Confirmas iOS+Android, ou Android-first (para maximizar a automação por notificações)?
+| Escolha | Default que vou assumir | Alternativa |
+|---------|------------------------|-------------|
+| Nome do app | A definir (uso "App Finanças da Família" como placeholder) | Dá-me um nome quando quiseres |
+| Tom do bot | Prático, claro e simpático, com modo "divertido" opcional | Só sério / só divertido |
+| Modo escuro | Claro **e** escuro (segue o sistema) | Só um deles |
+| Quem instala onde | iPhone via TestFlight; Android sideload; web por URL | Publicar nas lojas (opcional) |
+| Membros da família no v1 | Suporte a vários membros desde cedo | Começar só com 1–2 e expandir |
 
-### Decisão #3: Quão central é a leitura de notificações?
-- É o teu pedido explícito, mas é a parte **mais frágil e arriscada** (ver `05`). É um **extra** sobre o Open Banking, ou queres que seja o **destaque** do produto? (Recomendo extra; o destaque deve ser "automático e fiável", não uma técnica específica.)
+Se não responderes, sigo com os defaults — são reversíveis.
 
-### Decisão #4: Modo de receita inicial
-- Só assinatura no início (mais simples), ou já planear negociação de contas / receita de valor cedo? (Recomendo assinatura no MVP, receita de valor na fase 3.)
+## PARTE C — Riscos e mitigações
 
-### Decisão #5: Nome, marca e personalidade do bot
-- Nome do app? Tom do bot (prático? divertido tipo Cleo? ambos com opção)?
-
-## PARTE B — Riscos e mitigações
-
-| Risco | Probabilidade | Impacto | Mitigação |
+| Risco | Probab. | Impacto | Mitigação |
 |-------|:---:|:---:|-----------|
-| Google recusa leitura de SMS / remove app | Alta | Médio | Não depender de SMS; build sem SMS pronto; usar notificações + Open Banking |
-| Notificações pouco fiáveis (OEMs matam serviço) | Alta | Médio | Multi-fonte + reconciliação; comunicar honestamente; correção fácil |
-| iOS não permite captura por notificação/SMS | Certa | Médio | Open Banking + e-mail + entrada rápida no iOS |
-| Custo do aggregador come a margem | Média | Alto | Limitar contas no grátis; converter para Premium; escolher aggregador certo |
-| Re-consentimento (180 dias/12 meses) causa drop-off | Alta | Médio | UX de relink dedicada; lembretes antes de expirar |
-| Bot diz algo errado/vinculativo (Air Canada) | Média | Alto | Números só por SQL; citar origem; disclaimers; logging; lado informativo |
-| Multa por exagerar/cancelamento difícil (Cleo/FTC) | Média | Alto | Honestidade radical; cancelamento em 1 toque |
-| GoCardless não reabre registos grátis (UE) | Média | Médio | Plano B: Tink/Salt Edge/Plaid (custo) |
-| Custo/atraso da verificação CASA (Gmail) | Média | Médio | Começar por alias de reencaminhamento; Gmail só se justificar |
-| Biblioteca de notificações desatualizada (2022) | Alta | Baixo | Fork/patch para Android atual; orçamentar manutenção |
-| Concorrência (Cleo, Rocket Money, locais como Nubank) | Alta | Médio | Diferenciar por automação multi-fonte fiável + bot honesto |
+| GoCardless não aceitar novos registos (Open Banking grátis PT) | Média | Médio | Plano B: Tink/Salt Edge/Plaid (custo mínimo à escala família); Plano C: começar sem Open Banking |
+| Re-consentimento Open Banking a cada 180 dias | Alta | Baixo (família pequena) | Fluxo de relink simples + lembrete antes de expirar |
+| Notificações pouco fiáveis no Android (OEMs matam serviço) | Alta | Médio | Multi-fonte + reconciliação + correção fácil; comunicar honestamente |
+| iOS não permite captura por notificação | Certa | Baixo | iPhone usa Open Banking + e-mail + entrada rápida |
+| "Write once run everywhere" da Expo ter arestas (web) | Média | Médio | Ficheiros `.web.tsx` específicos onde preciso; testar cedo (ver `16`) |
+| Manter o app sozinho dá trabalho (parsers, libs desatualizadas) | Média | Médio | Escolher libs vivas; arquitetura simples; sem features que não usamos |
+| Bot dizer um número errado | Média | Médio | Números só por SQL; citar origem; é uso familiar (risco legal baixo, mas confiança importa) |
+| Custo da IA crescer | Baixa | Baixo | Caching + routing + batch; à escala família é cêntimos |
 
-## PARTE C — O que está validado vs por validar
+## PARTE D — O que está validado vs por validar
 
-**Validado pela pesquisa:**
-- Viabilidade técnica da leitura de notificações no Android (com ressalvas).
-- Impossibilidade no iOS.
-- Realidade das políticas Google Play (SMS restrito; exceção existe mas é incerta).
-- Custos e cobertura dos aggregadores por região.
-- Padrões de monetização e guardrails legais do bot.
-- Arquitetura do bot (números via SQL, prompt caching, routing).
+**Validado pela pesquisa:** viabilidade da captura (notificações Android, limites iOS), Open Banking PT (GoCardless/Tink/etc.), arquitetura do bot, e — na ronda atual — design/UI-UX, gráficos, multi-plataforma e funcionalidades inovadoras (docs `12`–`17`).
 
-**Por validar (próximos passos depois das tuas decisões):**
-- Aggregador concreto + custos reais (precisam de contacto comercial/sandbox).
-- Se GoCardless reabriu registos grátis (UE).
-- Templates de parsing dos bancos específicos do mercado escolhido.
-- Preço final ajustado ao poder de compra do mercado.
-- Estado exato da exceção de SMS no momento da submissão à Play.
+**Por validar (tarefas práticas quando começarmos a codar):**
+- Conseguir registo no aggregador Open Banking (GoCardless ou alternativa).
+- Templates de parsing dos bancos da família (CGD, BCP, etc.).
+- Testar a build web da Expo cedo, para apanhar arestas.
 
-## Próximo passo concreto
-Responde às **5 decisões da Parte A** (sobretudo o **mercado**) e eu avanço para:
-1. Escolher e configurar o aggregador (sandbox).
-2. Montar o esqueleto do backend + modelo de dados.
-3. Construir o MVP da Fase 1 (captura Open Banking + entrada rápida + ver gastos).
+## Próximo passo
+
+Estou agora a **desenhar tudo** (design system, gráficos, inovação, família, multi-plataforma e o documento ecrã-a-ecrã `17`) para tu veres o produto inteiro desenhado antes de uma linha de código. Quando estiver, lês e dizes o que mudar. Decisões pequenas da Parte B podem vir nessa altura.

@@ -1,62 +1,52 @@
 # 00 — Sumário Executivo
 
-## O problema
+> **Atualizado:** app **privado da família**, sem venda e sem mensalidades. Portugal. Android + iPhone + navegador. Foco em UI/UX bonita e bem desenhada.
 
-Gerir dinheiro à mão é chato e por isso quase ninguém faz. Os apps de finanças mais populares ainda obrigam o utilizador a ligar contas, categorizar gastos e manter tudo atualizado — e a maior parte das pessoas desiste nas primeiras semanas. A própria Mint (20M+ utilizadores registados, mas só ~3,6M ativos antes de fechar em 2024) mostrou que um registo enorme não vale nada se as pessoas não usam.
+## O que estamos a construir
 
-## A nossa proposta
+O **app de finanças da nossa família** — para deixarmos de precisar de apps de fora. Liga-se uma vez e passa a captar gastos, contas e dívidas **sozinho**; mostra tudo de forma **bonita** (gráficos elegantes, modo escuro, animações suaves) em **telemóvel, tablet e navegador**; e tem um **bot/assistente de IA** (Claude) que responde, organiza e resolve tarefas.
 
-Um app de finanças pessoais **"automático primeiro"**: o utilizador liga uma vez e o app passa a captar gastos, contas e dívidas **sozinho**, a partir de:
+Como **não vendemos** e não há mensalidades, podemos fazer o que os apps comerciais não fazem: **sem paywalls, sem anúncios, sem vender dados, privacidade total** — e otimizar 100% para a família gostar.
 
-- **Notificações do telemóvel** (alertas de compra/pagamento dos bancos) — Android.
-- **Open Banking / Open Finance** (ligação direta e regulada às contas) — Android e iOS.
-- **E-mail** (recibos e faturas) e **entrada rápida** assistida (atalho/partilha/voz) como rede de segurança.
+## As fontes de captura automática
 
-E um **bot/assistente de IA** (Claude) que:
+- **Notificações do telemóvel** (alertas de compra dos bancos) — Android.
+- **Open Banking** (ligação regulada às contas, via aggregador) — Android, iPhone e web.
+- **E-mail** (recibos) e **entrada rápida** (atalho/voz/partilha/widget) como rede de segurança.
+- Tudo unido por **deduplicação**; correção manual sempre possível.
 
-- Responde a perguntas em linguagem natural ("quanto gastei em comida este mês?").
-- Categoriza, deteta assinaturas duplicadas e contas a vencer, cria lembretes.
-- Avisa de forma proativa e "resolve coisas" dentro do app, com a personalidade certa.
+## O bot (Claude)
 
-## Para quem
+Responde ("quanto gastámos em comida este mês?"), categoriza, deteta subscrições e contas a vencer, cria lembretes e avisa de forma proativa. Regra de ouro: **os números vêm sempre de código/SQL, nunca inventados pelo modelo**. Modelos por custo: Haiku (categorizar), Sonnet (conversar), Opus (raciocínio difícil). Custo à escala família: cêntimos/mês.
 
-Pessoas que querem controlar o dinheiro **sem trabalho manual**. Dois eixos de persona (ver `03-visao-e-proposta.md`):
-- O **"não tenho paciência"** — quer ver o saldo real e quanto pode gastar, sem configurar nada.
-- O **"endividado/aperto"** — precisa de saber o que deve, quando vence, e como não falhar pagamentos.
+## Custos (porque não há receita, o objetivo é gastar pouco)
 
-## Como ganhamos dinheiro (resumo)
+Para uma família, **~0–15 €/mês** (provavelmente perto de 0): Open Banking no tier grátis da GoCardless, IA em cêntimos, hosting em tier grátis. Detalhe em `09-custos-operacao.md`.
 
-Assinatura é a base, mas **a margem real vem de receita extra** (lição dos que mais faturam):
-- Assinatura premium (tiers tipo Cleo/Rocket Money: ~5,99–14,99 USD/mês).
-- Funcionalidades de valor: deteção+cancelamento de assinaturas, negociação de contas, alertas de subida de preço.
-- (Mais tarde, conforme mercado e licenças) produtos financeiros: poupança, cartão, adiantamento — onde a regulação e o risco compensam.
+## A realidade da automação (ler `05`)
 
-Detalhe em `09-monetizacao.md`.
+- **iPhone:** não dá para ler notificações/SMS (limite da Apple) → automação por **Open Banking + e-mail + entrada rápida**.
+- **Android:** dá para ler notificações (frágil, fabricantes matam serviços; manutenção de parsers) → ótimo **extra** sobre o Open Banking, não a única fonte.
+- **Conclusão:** captura **multi-fonte e tolerante a falhas**, nunca prometer "100% automático".
 
-## O que aprendemos com o mercado (as 5 lições)
+## Multi-plataforma (ler `16`)
 
-1. **Diversificar receita além da assinatura** é o que separa quem fatura muito (Rocket Money fica com 35–60% da poupança de negociação; Cleo soma assinatura + taxa de transferência expresso + cartão; Nubank/Revolut vivem de intercâmbio, juros e tiers).
-2. **A Mint morreu** porque o modelo só-de-anúncios/lead-gen é fraco e desligado do valor para o utilizador; a Intuit consolidou no Credit Karma. → Não construir o negócio em cima de anúncios.
-3. **A fiabilidade da sincronização bancária é a queixa nº1 de quase todos** (Spendee 2,7★, YNAB, PocketGuard, Emma, Wallet). → Fiabilidade da captura é uma vantagem competitiva, não um detalhe.
-4. **A Cleo provou que um bot com personalidade vende** (~300M USD ARR), mas **levou multa de 17M USD da FTC** por exagerar valores/velocidade de adiantamentos e dificultar cancelamento. → Personalidade sim; honestidade e cancelamento fácil obrigatórios.
-5. **Confiança e privacidade são o produto.** Ler notificações/SMS e dados bancários exige consentimento claro, dados no dispositivo sempre que possível, e conformidade (RGPD/LGPD/PSD2). É também um filtro das lojas de apps.
+Uma só base de código **Expo / React Native** para Android, iPhone e **navegador** (web/PWA), cada um a sentir-se nativo (tabs no telemóvel, barra lateral na web). Detalhe e escolha de bibliotecas no doc de multi-plataforma.
 
-## A realidade incómoda da "automação total" (ler com atenção)
+## Bonito e bem desenhado (o teu pedido principal)
 
-- **iOS:** ler notificações ou SMS de outras apps é **impossível** por design da Apple. No iOS, a automação só pode vir de **Open Banking + e-mail + entrada rápida**.
-- **Android:** dá para ler notificações (`NotificationListenerService`) e, com exceção aprovada, SMS — mas:
-  - É **frágil** (fabricantes matam serviços em segundo plano; formatos mudam; duplicados).
-  - É **arriscado nas políticas da Google Play** (a leitura de SMS é fortemente restrita; a Google muitas vezes recusa dizendo que "introdução manual é a alternativa").
-- **Conclusão:** A automação tem de ser **multi-fonte e tolerante a falhas**, com correção manual sempre possível. Nunca prometer "100% automático". Detalhe em `05-automacao-captura-de-dados.md`.
+Há agora um bloco de documentos só de design, para veres o produto inteiro desenhado antes de codar:
+- `12` Design system (cores, tipografia, espaçamento, modo escuro, micro-interações)
+- `13` Visualização de dados (que gráfico para cada coisa + bibliotecas)
+- `14` Funcionalidades inovadoras (e "como melhoro isto")
+- `15` Família e multi-utilizador (partilha, privacidade, jovens/mesadas)
+- `16` Multi-plataforma e UX mobile (Expo web, responsivo, bibliotecas)
+- `17` Ecrãs e fluxos (tudo desenhado, ecrã a ecrã)
 
-## Stack proposta (resumo)
+## Mapa dos documentos
 
-- **App:** Expo / React Native (TypeScript) — já é a base limpa neste repositório. Build com EAS; módulo nativo + config plugin para o leitor de notificações no Android; dev build (não Expo Go).
-- **Backend:** API + base de dados estruturada (Postgres) para transações; o bot usa **text-to-SQL / ferramentas** para somar com exatidão (LLMs não fazem contas fiáveis).
-- **IA:** API da Claude. Routing de modelos por custo (Haiku para categorizar, Sonnet para conversa, Opus/Fable para raciocínio difícil), **prompt caching** para baixar custo, **tool use** para o bot ler dados e agir.
+Ver `README.md` para o índice completo e a ordem de leitura.
 
-Detalhe em `07-arquitetura-tecnica.md` e `06-bot-assistente-ia.md`.
+## Estado
 
-## Decisões que dependem de ti, chefe
-
-A principal: **mercado primário (Brasil vs Portugal/Europa)** — muda integrações, idioma e até a viabilidade da automação por notificações. Lista completa em `11-riscos-e-decisoes.md`.
+Fase de **estudo e desenho**. Sem código de produto ainda. A seguir: terminar os documentos de design (`12`–`17`) e depois começar a construir, ecrã a ecrã.

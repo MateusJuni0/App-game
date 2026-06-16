@@ -4,10 +4,11 @@
 
 ## Fase 0 — Fundações (antes de código de produto)
 - ✅ Limpar o projeto antigo (jogo do impostor) — **feito**.
-- ✅ Especificação completa (estes documentos) — **feito**.
-- ⬜ Decisões do chefe: mercado, plataformas, modo de receita inicial (`11`).
-- ⬜ Escolher aggregador Open Banking do mercado e abrir conta/sandbox.
-- ⬜ Definir stack de backend e hosting.
+- ✅ Especificação completa, incluindo design (docs 00–17) — **feito**.
+- ✅ Decisões grandes: app privado da família, sem venda, Portugal, iOS+Android+web (`11`).
+- ⬜ Confirmar aggregador Open Banking (GoCardless → senão Tink/Salt Edge) e abrir sandbox.
+- ⬜ Montar esqueleto Expo + Supabase (RLS por família) + NativeWind (ver `16`).
+- ⬜ Decisões pequenas pendentes (nome do app, etc. — `11`).
 
 ## Fase 1 — MVP "captura + ver" (provar a promessa central)
 Objetivo: o utilizador liga uma conta e **vê os gastos sem digitar**.
@@ -26,21 +27,24 @@ Objetivo: aprofundar a automação e lançar o assistente.
 - **Bot v1 (Claude):** responder a perguntas (números via SQL), categorizar, criar lembretes. Tool use + prompt caching + routing.
 - **Deteção de subscrições** e **contas a vencer → lembretes** (serve Persona B; pedido do chefe).
 - Nudges proativos (com limites de frequência/relevância).
-- **Premium** + cancelamento em 1 toque.
+- Modo escuro e design system aplicados (ver `12`).
 
-## Fase 3 — "Resolver" + receita de valor
-Objetivo: o bot age e a app gera margem.
-- Sinalizar/cancelar subscrições (1 toque).
-- **Negociação de contas** (concierge/IA draft) — receita extra transparente.
-- Bot com mais ações (com aprovação + auditoria).
-- Resumos semanais/mensais, insights avançados.
+## Fase 3 — "Resolver" + família + polimento
+Objetivo: o bot age, a família partilha, e tudo fica bonito.
+- Sinalizar subscrições e duplicados da família (1 toque).
+- Bot com mais ações (com aprovação + auditoria); tom ajustável.
+- **Família:** convites, privacidade granular por conta, objetivos partilhados (ver `15`).
+- **Runway** (calendário de fluxo de caixa com aviso de saldo negativo, ver `14`).
+- Resumos semanais/mensais e relatório familiar; insights avançados.
 - E-mail via alias de reencaminhamento (recibos).
+- Aplicar o design system e gráficos a todos os ecrãs (ver `12`/`13`/`17`).
 
-## Fase 4 — Expansão
-- Partilha familiar/casal.
-- Multi-moeda / segundo mercado.
-- (Avaliar) produtos financeiros com licenças (poupança/cartão/adiantamento) — só se a regulação e o risco compensarem.
-- (Avaliar) Gmail API com CASA, se o e-mail provar valor que justifique o custo.
+## Fase 4 — Expansão (para a família)
+- Variante **jovens** (mesada, tarefas, objetivos, lições — ver `15`).
+- Widgets, ecrã de bloqueio, atalhos/Botão de Ação, "Trip Mode" (ver `14`).
+- Multi-moeda (se a família viajar/tiver contas noutras moedas).
+- Relatório anual "Ano em Dinheiro" da família.
+- (Avaliar) Gmail API com CASA, só se o e-mail provar valor que justifique o custo.
 - (Avaliar) Managed Agents para o bot, se a complexidade justificar.
 
 ## Princípios de execução
