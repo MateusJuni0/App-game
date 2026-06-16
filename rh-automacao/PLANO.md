@@ -2,6 +2,10 @@
 
 > Documento vivo de planejamento. Objetivo desta fase: **pensar antes de codar**.
 > Atualize à medida que as decisões forem sendo tomadas.
+>
+> Companheiros deste doc:
+> - [`DIA-A-DIA-RECRUTADOR.md`](./DIA-A-DIA-RECRUTADOR.md) — o que é chato no dia a dia e o que automatizar (por ordem de dor).
+> - [`UI-DESIGN.md`](./UI-DESIGN.md) — princípios de design e telas (incl. o copiloto ao vivo).
 
 ---
 
@@ -120,8 +124,9 @@ Isso precisa estar resolvido **antes** de a Fase 2 ir pra produção.
 ## 8. Decisões em aberto
 
 - [ ] **MVP:** começamos pela Fase 1 (roteiro) ou já miramos a Fase 2 (tempo real)?
-- [ ] **Plataforma da entrevista:** Google Meet, Zoom, Teams, presencial? (define
-      como capturamos o áudio na Fase 2)
+- [x] **Plataforma da entrevista:** ~~Meet/Zoom/Teams/presencial?~~ **Decidido:
+      agnóstico de plataforma** — o copiloto é uma tela independente que recebe a
+      transcrição venha de onde vier. Detalhes em `DIA-A-DIA-RECRUTADOR.md`.
 - [ ] **Stack:** confirma Next.js + Node? Ou prefere Python no backend?
 - [ ] **Idioma das entrevistas:** só PT-BR ou também inglês?
 - [ ] **Quem usa a tela do copiloto:** só o recrutador, certo?
