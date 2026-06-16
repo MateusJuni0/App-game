@@ -11,7 +11,9 @@
 5. **O que dá MESMO para um projeto privado, de graça e sem licença:** **preparar o pagamento e entregar ao utilizador para ele confirmar no banco dele** — via **código QR SEPA (EPC069-12)** ou link de transferência pré-preenchida. O dinheiro **nunca passa por nós**.
 6. ⚠️ **Caveat português:** o suporte dos apps de banco PT ao QR EPC é **irregular** — tem de ser testado banco a banco antes de confiarmos nisto.
 
-**Recomendação:** **não prometer "pagar contas automaticamente".** Construir **lembretes + ler/scan da conta + handoff assistido (QR / link / mostrar entidade-referência-valor)**. A automação total fica para "se um dia abrirmos empresa e quisermos mesmo" (ver secção 7).
+7. **Mas a integração vai mesmo ao máximo (pedido do chefe):** o **"clicar → ser redirecionado ao banco → dar autorização"** é atingível — é o fluxo PIS. **Sem licença própria de €50k**: basta uma **entidade simples (até empresário em nome individual) + KYB + um aggregador que empresta a licença** (Yapily Connect / Token.io). Desenhamos a app para esse degrau encaixar sem rework (ver secção 6.5).
+
+**Recomendação:** começar sem fricção (**lembretes + ler/scan + handoff assistido: mostrar dados + copiar + abrir a app do banco/MB Way**); ligar a **autorização de leitura** (Open Banking) assim que tivermos aggregador; e deixar o **degrau "pagar com autorização" (PIS) pronto a ativar** se quiseres registar uma entidade simples. **Não prometer pagamento 100% automático sem o utilizador autorizar cada vez** (isso — VRP — não existe na UE; ver secção 7).
 
 ---
 
@@ -93,7 +95,28 @@ Para **confirmar que a conta foi paga** (ler a conta), usamos um aggregador de O
 **Nível 4 — Pagamento automático dentro da app (NÃO viável para app privado).**
 A capacidade técnica existe (PIS / Multibanco service payment), mas exige **empresa + licença/agente + custo**. **Bloqueado** enquanto formos um projeto familiar.
 
-## 7. Se um dia quisermos mesmo a automação total
+## 6.5 — Máxima integração possível (o pedido do chefe)
+
+> O chefe: "se não dá para pagar direto, mas dá para **clicar e ser redirecionado já para a parte certinha** onde se faz ou se **dá alguma autorização**, eu quero tudo completo." Aqui está a escada completa, do menos ao mais integrado, com o mecanismo exato de cada degrau. **Desenhamos a app para suportar todos**, ativando cada um conforme o que tivermos (entidade/aggregador).
+
+**Nuance-chave:** o "clicar → ser redirecionado → dar autorização" é **exatamente o fluxo PIS** (redirect ao banco + SCA). Não é impossível — só precisa de uma **entidade registada + um aggregador licenciado** (que emprestam a licença deles). Por isso a escada vai mesmo até ao "paga com 1 toque + autorização no banco".
+
+| Degrau | Experiência | O que é preciso | Estado |
+|--------|-------------|-----------------|--------|
+| **0. Mostrar + copiar** | A app mostra entidade/referência/valor (ou IBAN/nome/valor/ref) e copia campo a campo com 1 toque | Nada | ✅ Já no plano (Nível 1–2) |
+| **1. Abrir a app certa** | Botão "Abrir MB Way / Abrir o meu banco" leva o utilizador à app (traz para a frente). **Não pré-preenche** (não há esquema público), mas com os dados já copiados é colar e confirmar | Declarar schemes (`LSApplicationQueriesSchemes` no iOS); detetar a app do banco da família | ✅ Fazemos |
+| **2. QR de pagamento** | Mostrar QR para o utilizador ler na app do banco | QR EPC (SEPA) — **⚠️ pouco suportado em PT**; só como bónus | ⚠️ Best-effort PT |
+| **3. Autorizar a LEITURA das contas (Open Banking AIS)** | Tap "Ligar banco" → **redireciona ao banco → utilizador autoriza (SCA)** → a app passa a ler saldos/transações e a marcar contas como "pagas ✓" | Aggregador AIS licenciado (read-only). A "autorização" que o chefe descreve **já existe aqui** | ✅ Atingível (custo a orçamentar, ver `09`) |
+| **4. Iniciar o PAGAMENTO com autorização (PIS)** | Tap "Pagar" → **redireciona ao banco → utilizador autoriza (SCA) → o pagamento é iniciado** (transferência SEPA/instantânea). **É exatamente o que o chefe quer** | **Entidade registada + KYB + aggregador licenciado (Yapily Connect / Token.io / Volt) que empresta a licença** (não precisa da nossa licença de €50k). SCA a cada pagamento | 🔓 Atingível **se registarmos uma entidade simples** |
+
+**Como deixamos "pronto" no código (sem rework):**
+- O ecrã "Pagar" é construído sobre uma **abstração de método de pagamento** (`PaymentHandoff`) com implementações: `CopyAndLaunch` (degrau 0–1, já), `EpcQr` (degrau 2), e `PisRedirect` (degrau 4, atrás de feature-flag).
+- O esquema de deep-link `cmetech://` (já no `app.json`) recebe o **retorno do banco** depois da autorização — o mesmo mecanismo serve a leitura (degrau 3) e o pagamento (degrau 4).
+- Assim, o dia em que registares a entidade e ligares um aggregador PISP, **ativa-se o degrau 4 sem reconstruir nada**.
+
+**Recomendação honesta:** começar nos degraus 0–1 (zero setup, já úteis) e ligar o degrau 3 (autorizar leitura) assim que tivermos um aggregador. O degrau 4 (pagar com autorização) fica **a um passo** — depende só de quereres registar uma entidade simples; a app já estará preparada para o receber.
+
+## 7. Se um dia quisermos mesmo a automação total (sem o utilizador autorizar cada vez)
 
 Caminho honesto (não é para já, mas fica documentado):
 1. **Abrir uma entidade legal** (empresa; em PT até um empresário em nome individual pode chegar para o KYB).
@@ -109,10 +132,10 @@ Caminho honesto (não é para já, mas fica documentado):
 
 ```
 Queres pagar uma conta?
-├─ A app prepara tudo (entidade/ref/valor ou QR/IBAN)         → SIM (Nível 1–2, fazemos)
-├─ O utilizador confirma no banco/MB Way dele?               → SIM (única via sem licença)
-├─ A app marca como paga ao ver o movimento (read-only)?     → SIM (Nível 3, via aggregador AIS)
-└─ A app paga sozinha sem o utilizador sair daqui?           → NÃO sem empresa + licença PISP (Nível 4)
+├─ A app prepara tudo + copiar + abrir a app do banco/MB Way   → SIM, sem nada (degrau 0–1)
+├─ A app marca como "paga ✓" ao ver o movimento (ler conta)    → SIM, com aggregador AIS (degrau 3; precisa autorização de leitura)
+├─ Tap → redireciona ao banco → autorizas → paga (PIS)         → SIM, SE registares entidade simples + aggregador PISP (degrau 4)
+└─ Paga sozinha SEM autorizares cada vez (VRP)                 → NÃO existe na UE em 2026 (secção 7)
 ```
 
 ## 9. Implicações para o resto da spec

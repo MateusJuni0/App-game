@@ -236,6 +236,28 @@ Também acessível por atalho Siri / Botão de Ação / widget (ver `14`).
 
 ---
 
+## 8b. Pagar conta (handoff assistido — ver `18`)
+
+Abre a partir de uma conta a vencer (dashboard "A VENCER" ou Runway). Integração levada ao máximo: prepara tudo e leva o utilizador ao sítio certo; ele confirma no banco dele.
+
+```
+┌─────────────────────────────────────────────┐
+│  Pagar — EDP                                  │
+│  Entidade   12345        [copiar]             │  ← copiar campo a campo (mecanismo mais fiável)
+│  Referência 987 654 321  [copiar]             │
+│  Valor      61,00 €      [copiar]             │
+│  ───────────────────────────────────────────  │
+│  [ Abrir MB Way ]   [ Abrir o meu banco ]     │  ← só ABRE a app (traz à frente); dados já copiados
+│  [ Mostrar QR ]  (se o teu banco suportar)    │  ← QR EPC; pouco suportado em PT (bónus)
+│  ───────────────────────────────────────────  │
+│  🔓 Pagar com autorização (PIS)               │  ← degrau 4: tap → redireciona ao banco → autorizas → paga
+│     (disponível se ligarmos um aggregador)    │     fica pronto no código atrás de feature-flag
+│  ───────────────────────────────────────────  │
+│  Depois de pagares, marco como paga ✓         │  ← reconciliação automática se houver leitura Open Banking
+└─────────────────────────────────────────────┘
+```
+O bot pode preparar este ecrã ("a conta da EDP vence amanhã — está tudo pronto, é só confirmares") e **nunca diz que pagou** se não pagou. Detalhe e escada completa de integração em `18`.
+
 ## 9. Definições
 
 Organizadas por objetivo: **Perfil & conta · Segurança (biometria/2FA/bloqueio) · Contas ligadas (estado de sync, re-ligar) · Categorias & regras · Orçamento & preferências · Notificações (canais separados: fraude/atividade/promo) · Família & partilha · Dados & privacidade (exportar/apagar) · Aparência (modo escuro, reordenar dashboard).**
