@@ -6,10 +6,11 @@ A boa notícia: para uma família (digamos 2 a 8 pessoas), o custo pode ser **qu
 
 ## 1. Open Banking (ligar os bancos) — o maior custo potencial, mas grátis à nossa escala
 
-- Em Portugal, ligar contas via **GoCardless Bank Account Data (ex-Nordigen)** tem um **tier de produção GRÁTIS de ~50 contas ligadas por período de 30 dias**. Uma família inteira cabe folgadamente nisto (cada pessoa tem 1–3 contas → mesmo 8 pessoas ≈ 24 contas << 50).
-- ⚠️ **Risco a verificar:** a GoCardless parou de aceitar **novos registos** ~jul. 2025. **Primeira tarefa prática:** confirmar se conseguimos abrir conta. Se não:
-  - **Plano B:** Tink / TrueLayer / Salt Edge / Plaid (Europa) — têm custo por orçamento, mas para uma família o volume é minúsculo (negociável, ou tier de avaliação).
-  - **Plano C:** começar só com **leitura de notificações (Android) + entrada rápida**, sem Open Banking, e adicionar quando resolvermos o aggregador. O app é útil mesmo assim.
+- O **GoCardless Bank Account Data (ex-Nordigen)** tinha um tier de leitura grátis (~50 contas/30 dias) — perfeito para uma família. **⚠️ MAS está confirmado que fechou a novos registos em jul. 2025** (ver `18`). Ou seja: **mesmo a leitura grátis deixou de estar disponível para projetos novos.**
+- Consequência prática (caminhos, do mais barato ao mais caro):
+  - **Plano A (sem custo):** começar **sem Open Banking** — **leitura de notificações (Android) + entrada rápida + handoff de pagamentos assistido**. O app é genuinamente útil assim (lembretes, "seguro para gastar" com entrada manual, preparar contas para pagar). **Zero euros.**
+  - **Plano B (custo a confirmar):** um aggregador AIS pago (Tink / Salt Edge) para leitura automática das contas — preços são "sales-led" (sem números públicos), mas o volume de uma família é minúsculo; a negociar. Iniciar pagamentos (PIS) **não entra** (ver `18`).
+  - **Plano C:** ver se a GoCardless reabre registos, ou se há outro tier grátis de leitura na UE.
 - Cobertura PT: CGD, Millennium BCP, Santander Totta, Novo Banco, etc. (via SIBS/Berlin Group).
 
 ## 2. IA do bot (Claude API) — cêntimos por mês para uma família
@@ -33,7 +34,7 @@ A boa notícia: para uma família (digamos 2 a 8 pessoas), o custo pode ser **qu
 
 | Item | Custo mensal | Notas |
 |------|-------------|-------|
-| Open Banking (GoCardless) | **0 €** | Tier grátis 50 contas/30 dias (se conseguirmos registo) |
+| Open Banking (leitura) | **0 € (Plano A) ou a orçamentar** | GoCardless grátis fechou a novos registos; Plano A é sem Open Banking; Plano B é aggregador pago (volume família é mínimo) |
 | Claude API (bot + categorização) | **< 5 €** | Com caching + routing + batch |
 | Backend/hosting (Supabase free / VPS) | **0–5 €** | Tier grátis chega para família |
 | Domínio (opcional) | **~1 €** | ~10 €/ano se quisermos URL bonito |

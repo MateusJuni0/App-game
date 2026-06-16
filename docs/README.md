@@ -31,6 +31,7 @@ O **app de finanças da família**: capta os gastos e dívidas quase sozinho (no
 | 07 | [Arquitetura técnica](./07-arquitetura-tecnica.md) | Stack, modelo de dados (ver também 16) |
 | 08 | [Segurança e privacidade](./08-seguranca-privacidade-conformidade.md) | RGPD, PSD2, políticas das lojas, cifra |
 | 09 | [Custos de operação](./09-custos-operacao.md) | Sem mensalidades: como manter ~0 €/mês |
+| 18 | [Pagar contas (MB Way / Multibanco)](./18-pagamentos-mbway-multibanco.md) | Estudo a fundo: o que dá, o que precisa de licença, plano realista |
 
 ### Bloco 3 — Design (o "tudo bonito e desenhado")
 | # | Documento | O que responde |

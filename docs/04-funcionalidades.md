@@ -41,9 +41,10 @@
 | Funcionalidade | Prioridade | Notas |
 |----------------|-----------|-------|
 | Lembretes de contas a vencer | **Must** | Notificação local/push |
-| Cancelar/sinalizar subscrição (1 toque) | **Should** | Começar por "sinalizar"; cancelamento assistido depois |
-| Negociar conta (concierge/IA draft) | **Could** | Modelo Rocket Money; receita extra; complexo |
-| Mover dinheiro / pagar conta | **Won't (v1)** | Exige licenças de iniciação de pagamento + risco — futuro |
+| Pagar conta — **assistido** (mostrar entidade/referência/valor + copiar + abrir banco/MB Way) | **Should** | Sem licença; o utilizador confirma no banco dele (ver `18`) |
+| Reconciliação ("paga ✓" ao detetar o movimento) | **Could** | Só com leitura Open Banking (ver `18`/`09`) |
+| Sinalizar subscrição / duplicados da família (1 toque) | **Should** | Sinalizar, não cancelar automaticamente |
+| Pagar conta — **automático** (a app paga sozinha) | **Won't** | Exige empresa + licença PISP + eIDAS; não viável para app de família (ver `18`) |
 
 ## E. Conta & família (sem monetização — app privado)
 
