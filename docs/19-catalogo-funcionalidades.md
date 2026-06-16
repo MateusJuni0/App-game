@@ -134,6 +134,18 @@ Estas são funcionalidades dos neobancos/corretoras que **não** podemos fazer p
 
 ---
 
+## 13b. Refinamentos do checklist mestre (alto valor, a juntar)
+- **Diagrama Sankey receita→despesa** (partilhável, com valores ocultáveis) — *Monarch*: a visualização **mais amada** da categoria, barata de fazer, grande "wow" (já em `13`; entra como destaque).
+- **Alerta preditivo de "ritmo"** ("ao teu ritmo, o dinheiro acaba a 22") — *PocketGuard "Pace"*: usa fundos restantes + dias + histórico; complementa o Runway (`14`).
+- **Enriquecimento colaborativo de comerciantes** (uma correção da família serve todos; logótipo por domínio) — *Monzo*: fosso de qualidade de dados que compõe com o tempo.
+- **Linha de "Home Equity" auto** (valor do imóvel − hipoteca) tratada como ativo — *Copilot*. Em PT sem Zillow → valor do imóvel **manual** (ou referência idealista), atualizável.
+- **Garantias (warranty vault)** — *Wallet*: guardar recibo + data de fim de garantia, com lembrete. Raro e útil.
+- **Lista de compras com preços** → trava a compra por impulso; converte itens em transações — *Wallet*.
+- **Analisador de comissões** (fundos/PPR) — *Empower*: mostrar o peso das comissões na poupança (PT: PPR/fundos).
+- **Família "banco":** IOU sem cartão, **juros pagos pelos pais**, e cobrar aos filhos custos partilhados — *FamZoo* (já em `15`).
+
+> Guardrails de notificações (confirmados): limitar frequência (≥6 push/semana → 32% desinstalam), horas de silêncio 22h–7h (−30–40% queixas), canais fraude/atividade/promo **independentes**, e horário de envio personalizado por utilizador (até +88% de engagement). **Relevância é a alavanca nº1 de retenção** (já em `04`).
+
 ## As "armas secretas" (alto valor, muitas vezes em falta)
 1. **Runway com a data exata de saldo negativo** (+ BNPL) — quase ninguém faz bem.
 2. **Seguro por dia até ao ordenado** (auto-ajustável).
