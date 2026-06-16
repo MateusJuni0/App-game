@@ -43,8 +43,16 @@ transaction ──< transaction_comment   (chat família)
 - *Seed:* taxonomia PT completa (doc 20) inserida como `is_system=true`; a família pode adicionar/renomear as suas.
 
 ### Transações (append-only)
-**`transaction`**
-- `id` (UUID gerado no dispositivo p/ idempotência), `household_id`, `account_id`, `posted_at` (timestamptz), `amount` (numeric(14,2); negativo = saída, positivo = entrada), `currency`, `merchant_raw` (descritor bruto), `merchant_name` (limpo/enriquecido), `merchant_logo_url`, `category_id`, `category_confidence` (`very_high|high|medium|low`), `source` (`openbanking|notification|sms|email|manual|receipt`), `status` (`pending|posted|reconciled`), `dedup_key` (montante+data~+comerciante+conta), `is_private` (bool, esconder de outros membros), `excluded_from_budget` (bool), `note`, `created_by_user_id`, `created_at`.
+**`transaction`** — ver o motor financeiro (`23`) para as invariantes obrigatórias.
+- `id` (UUID gerado no dispositivo p/ idempotência), `household_id`, `account_id`, `posted_at` (timestamptz),
+- **`amount_cents` (bigint, cêntimos inteiros — NUNCA float; negativo = saída, positivo = entrada)**, `currency` (ISO 4217),
+- **`kind` (`expense|income|transfer`, NOT NULL)**, **`transfer_group_id`** (uuid, liga as duas pernas de uma transferência; null se não for transferência),
+- `merchant_raw`, `merchant_name`, `merchant_logo_url`,
+- **`category_id` NOT NULL** (inclui a categoria de sistema "Por classificar"), `category_confidence` (`very_high|high|medium|low`),
+- FX (gasto em moeda estrangeira): `original_amount_cents`, `original_currency`, `fx_rate`, `fx_date`,
+- `source` (`openbanking|notification|sms|email|manual|receipt`), `status` (`pending|posted|reconciled`), `dedup_key` (conta+montante+janela-data+comerciante),
+- `is_private` (bool), `excluded_from_budget` (bool), `note`, `created_by_user_id`, `created_at`.
+- **Regras (do `23`):** transferências (`kind=transfer`) e pagamentos de cartão **não** contam como gasto/receita; `soma(splits)==montante`; append-only (edições geram evento); saldos são derivados.
 - Índices: `(household_id, posted_at desc)`, `(account_id, posted_at)`, `(category_id)`, `dedup_key unique` por conta.
 
 **`transaction_split`** — dividir uma transação em várias categorias/membros.

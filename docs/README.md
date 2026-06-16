@@ -56,6 +56,8 @@ O **app de finanças da família**: capta os gastos e dívidas quase sozinho (no
 | 20 | [Categorias e ícones (PT)](./20-categorias-e-icones.md) | Taxonomia completa de categorias com ícones e cores |
 | 21 | [Modelo de dados](./21-modelo-de-dados.md) | Esquema pronto a construir (tabelas, campos, RLS) |
 | 22 | [Plano de construção](./22-plano-de-construcao.md) | Tarefas ordenadas para subagentes construírem tudo |
+| 23 | [Motor financeiro](./23-motor-financeiro.md) | **O núcleo do dinheiro** — tudo o que toca em dinheiro passa aqui (à prova de cascata) |
+| 24 | [Revisão crítica](./24-revisao-critica.md) | O que falta para ser "de primeira", casos extremos, régua de lançamento |
 
 ## Conclusões que saltam à vista (TL;DR)
 
