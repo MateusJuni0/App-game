@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "App-game",
-    "slug": "App-game",
+    "name": "CM eTech Finanças",
+    "slug": "cm-etech-financas",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
+    "scheme": "cmetech",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {

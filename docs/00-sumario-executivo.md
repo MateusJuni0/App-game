@@ -4,7 +4,7 @@
 
 ## O que estamos a construir
 
-O **app de finanças da nossa família** — para deixarmos de precisar de apps de fora. Liga-se uma vez e passa a captar gastos, contas e dívidas **sozinho**; mostra tudo de forma **bonita** (gráficos elegantes, modo escuro, animações suaves) em **telemóvel, tablet e navegador**; e tem um **bot/assistente de IA** (Claude) que responde, organiza e resolve tarefas.
+O **CM eTech Finanças** — o app de finanças da nossa família — para deixarmos de precisar de apps de fora. Liga-se uma vez e passa a captar gastos, contas e dívidas **sozinho**; mostra tudo de forma **bonita** (gráficos elegantes, modo escuro, animações suaves) em **telemóvel, tablet e navegador**; e tem um **bot/assistente de IA** (Claude) que responde, organiza e resolve tarefas.
 
 Como **não vendemos** e não há mensalidades, podemos fazer o que os apps comerciais não fazem: **sem paywalls, sem anúncios, sem vender dados, privacidade total** — e otimizar 100% para a família gostar.
 

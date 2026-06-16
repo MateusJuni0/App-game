@@ -1,4 +1,6 @@
-# App de Finanças da Família — Especificação Completa
+# CM eTech Finanças — Especificação Completa
+
+> **App de finanças da família.** Nome: **CM eTech Finanças**.
 
 > Documento vivo. Fase atual: **estudo e desenho** (sem código de produto ainda).
 > **App privado da família — sem venda, sem mensalidades, sem anúncios.** Portugal. Android + iPhone + navegador.

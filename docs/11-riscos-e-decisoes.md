@@ -14,17 +14,18 @@
 
 Consequências (já refletidas nos docs): saiu a monetização (`09` virou custos); visão e personas viraram **família** (`03`); entram novos docs de **design, gráficos, inovação, família, multi-plataforma e ecrãs** (`12`–`17`).
 
-## PARTE B — Pequenas escolhas que ainda ajudam (mas eu avanço com um default se não disseres nada)
+## PARTE B — Escolhas (já decididas / com default)
 
-| Escolha | Default que vou assumir | Alternativa |
-|---------|------------------------|-------------|
-| Nome do app | A definir (uso "App Finanças da Família" como placeholder) | Dá-me um nome quando quiseres |
-| Tom do bot | Prático, claro e simpático, com modo "divertido" opcional | Só sério / só divertido |
-| Modo escuro | Claro **e** escuro (segue o sistema) | Só um deles |
-| Quem instala onde | iPhone via TestFlight; Android sideload; web por URL | Publicar nas lojas (opcional) |
-| Membros da família no v1 | Suporte a vários membros desde cedo | Começar só com 1–2 e expandir |
+| Escolha | Decisão |
+|---------|---------|
+| **Nome do app** | **CM eTech Finanças** ✅ |
+| **Tom do bot** | **Esperto que dá dicas de finanças, simpático e um bocadinho atrevido** (estilo "amigo que percebe de dinheiro"), com a regra de empatia: nunca gozar com quem está em aperto ✅ |
+| **Pagar contas (MB Way / Multibanco)** | **A estudar a fundo** (doc `18`) — feature desejada, mas regulada; ver verdict honesto antes de prometer ✅ pedido |
+| Modo escuro | Claro **e** escuro (segue o sistema) |
+| Quem instala onde | iPhone via TestFlight; Android sideload; web por URL (publicar nas lojas é opcional) |
+| Membros da família no v1 | Suporte a vários membros desde cedo |
 
-Se não responderes, sigo com os defaults — são reversíveis.
+Defaults são reversíveis; diz se quiseres mudar algum.
 
 ## PARTE C — Riscos e mitigações
 

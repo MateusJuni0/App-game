@@ -16,9 +16,10 @@ E **proativo:** nudges úteis (ver regras de frequência/relevância em `04`).
 
 A Cleo provou que personalidade vende (~300M USD ARR à volta de um chatbot), com modos **Hype** (encoraja) e **Roast** (gozo), escritos por ~15 copywriters. Mas há uma regra de empatia: **"nunca bater em quem está em baixo"**.
 
-Recomendação para nós:
-- **Tom por defeito:** prático, claro, amigável e direto (PT natural). Sem jargão.
-- **Modo opcional divertido** (estilo "hype") para quem quiser — mas nunca humilhante, nunca com utilizadores em aperto financeiro (Persona B).
+**Decisão do chefe (tom do bot):** o assistente é o **"esperto que percebe de dinheiro" — dá dicas de finanças, é simpático e um bocadinho atrevido**, como um amigo que sabe das coisas. Não é nem o robô seco nem o palhaço; é o conselheiro com personalidade.
+- **Tom por defeito:** esperto, simpático, com um piscar de olho. Dá dicas úteis sem ser maçador. PT natural, sem jargão.
+- **Dial de tom (opcional):** mais sério ↔ mais atrevido, à escolha de cada membro. A matemática é igual; só muda a voz (ver `14`).
+- **Regra de empatia (obrigatória):** **nunca gozar com quem está em aperto financeiro** nem com os jovens. O atrevimento é leve e encorajador, nunca humilhante.
 - Honestidade sempre: o bot diz o que sabe e o que não sabe; cita a origem dos números.
 
 ## 3. Arquitetura (o ponto mais importante: os números vêm de código, não do LLM)
